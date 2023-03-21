@@ -49,7 +49,7 @@ spec:
           ui:options:
             catalogFilter:
               kind: Group
-    - title: Choose a location
+    - title: Choose a Repo
       required:
         - repoUrl
       properties:
@@ -71,14 +71,14 @@ spec:
       #-${{ parameters.name }}.yaml
       input:
         #templateFileExtension: ".yaml"
-        cookiecutterCompat: true
+        #cookiecutterCompat: true
         targetPath: results
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/
         values:
           name: ${{ parameters.name }}
           region: ${{ parameters.region }}
           project-name: ${{ parameters.name }}
-          container: ${{parameters.container  }}
+          container: ${{ parameters.container  }}
 #    - id: fetch-base-container
 #      name: Fetch Base Container
 #      action: fetch:template
