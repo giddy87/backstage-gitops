@@ -1,0 +1,20 @@
+apiVersion: storage.azure.crossplane.io/v1alpha3
+kind: Account
+metadata:
+  name: {{ values.name }}
+  labels:
+    example: "true"
+spec:
+  resourceGroupName: {{ values.project-name }}
+  storageAccountSpec:
+    kind: Storage
+    location: {{ values.region }}
+    sku:
+      name: Standard_LRS
+      tier: Standard
+    tags:
+      application: crossplane
+  providerConfigRef:
+    name: azure
+  writeConnectionSecretToRef:
+    namespace: crossplane-system
