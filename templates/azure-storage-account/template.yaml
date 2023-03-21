@@ -95,7 +95,7 @@ spec:
         title: Create Azure storage account ${{ parameters.name }} and container ${{ parameters.container }}
         description: Azure storage account and container PR
         sourcePath: .
-        targetPath: /resources
+        targetPath: ./resources
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
 
