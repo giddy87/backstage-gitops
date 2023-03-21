@@ -67,7 +67,8 @@ spec:
     - id: fetch-base-sa
       name: Fetch Base SA
       action: fetch:template
-      targetPath: sa-${{ parameters.name }}.yaml
+      targetPath: sa.yaml
+      #-${{ parameters.name }}.yaml
       input:
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/azure-sa.yaml
         values:
@@ -77,23 +78,24 @@ spec:
     - id: fetch-base-container
       name: Fetch Base Container
       action: fetch:template
-      targetPath: container-${{ parameters.container }}.yaml
+      targetPath: container.yaml
+      #-${{ parameters.container }}.yaml
       input:
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/azure-sa-container.yaml
         values:
           name: ${{ parameters.name }}
           container: ${{ parameters.container }}
-#    - id: publish
-#      name: Publish
-#      action: publish:github:pull-request
-#      input:
-#        branchName: ${{ parameters.name}}
-#        title: Create Azure storage account ${{ parameters.name}} and container ${{ parameters.container}}
-#        description: Azure storage account and container PR
-#        sourcePath: .
-#        targetPath: /resources
-#        allowedHosts: ['github.com']
-#        repoUrl: ${{ parameters.repoUrl }}
+    - id: publish
+      name: Publish
+      action: publish:github:pull-request
+      input:
+        branchName: ${{ parameters.name}}
+        title: Create Azure storage account ${{ parameters.name}} and container ${{ parameters.container}}
+        description: Azure storage account and container PR
+        sourcePath: .
+        targetPath: .
+        allowedHosts: ['github.com']
+        repoUrl: ${{ parameters.repoUrl }}
 
 #    - id: register
 #      name: Register
