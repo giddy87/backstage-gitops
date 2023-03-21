@@ -4,7 +4,6 @@ metadata:
   name: {{ name }}
   labels:
     example: "true"
-    env: {{ env }}
 spec:
   resourceGroupName: {{ project-name }}
   storageAccountSpec:

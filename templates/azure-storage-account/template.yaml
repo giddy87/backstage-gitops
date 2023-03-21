@@ -64,14 +64,25 @@ spec:
 
   # here's the steps that are executed in series in the scaffolder backend
   steps:
-    - id: fetch-base
-      name: Fetch Base
+    - id: fetch-base-sa
+      name: Fetch Base SA
       action: fetch:template
+      targetPath: ../resources/sa-${{ parameters.name }}.yaml
       input:
-        url: ./template
+        url: https://github.com/giddy87/backstage-gitops/blob/main/base/azure-sa.yaml
         values:
           name: ${{ parameters.name }}
-          owner: ${{ parameters.owner }}
+          region: ${{ parameters.region }}
+          project-name: ${{ parameters.name }}
+    - id: fetch-base-container
+      name: Fetch Base Container
+      action: fetch:template
+      targetPath: ../resources/container-${{ parameters.container }}.yaml
+      input:
+        url: https://github.com/giddy87/backstage-gitops/blob/main/base/azure-sa-container.yaml
+        values:
+          name: ${{ parameters.name }}
+          container: ${{ parameters.container }}
     - id: publish
       name: Publish
       action: publish:github:pull-request
