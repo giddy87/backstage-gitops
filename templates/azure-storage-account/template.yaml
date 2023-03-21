@@ -68,7 +68,7 @@ spec:
       name: Fetch Base SA
       action: fetch:template
       targetPath: result
-      replace: true 
+      #replace: true 
       #-${{ parameters.name }}.yaml
       input:
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/
