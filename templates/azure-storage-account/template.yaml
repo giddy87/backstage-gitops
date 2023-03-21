@@ -67,11 +67,12 @@ spec:
     - id: fetch-base-sa
       name: Fetch Base SA
       action: fetch:template      
-      targetPath: .
       #replace: true 
       #-${{ parameters.name }}.yaml
       input:
         #templateFileExtension: ".yaml"
+        #cookiecutterCompat: true
+        targetPath: .
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/
         values:
           name: ${{ parameters.name }}
