@@ -67,7 +67,7 @@ spec:
     - id: fetch-base-sa
       name: Fetch Base SA
       action: fetch:template
-      targetPath: sa.yaml
+      #targetPath: sa.yaml
       #-${{ parameters.name }}.yaml
       input:
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/azure-sa.yaml
@@ -78,7 +78,7 @@ spec:
     - id: fetch-base-container
       name: Fetch Base Container
       action: fetch:template
-      targetPath: container.yaml
+      #targetPath: container.yaml
       #-${{ parameters.container }}.yaml
       input:
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/azure-sa-container.yaml
