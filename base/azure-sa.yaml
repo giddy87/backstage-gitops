@@ -1,14 +1,14 @@
 apiVersion: storage.azure.crossplane.io/v1alpha3
 kind: Account
 metadata:
-  name: {{ values.name }}
+  name: "{{ values.name }}""
   labels:
     example: "true"
 spec:
-  resourceGroupName: {{ values.project-name }}
+  resourceGroupName: "{{ values.project-name }}"
   storageAccountSpec:
     kind: Storage
-    location: {{ values.region }}
+    location: "{{ values.region }}"
     sku:
       name: Standard_LRS
       tier: Standard
