@@ -56,7 +56,7 @@ spec:
         repoUrl:
           title: Repository Location
           type: string
-           default: 'github.com?repo=backstage-gitops&owner=giddy87' 
+          default: 'github.com?repo=backstage-gitops&owner=giddy87' 
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
