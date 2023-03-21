@@ -66,11 +66,12 @@ spec:
   steps:
     - id: fetch-base-sa
       name: Fetch Base SA
-      action: fetch:template
+      action: fetch:template      
       targetPath: fetched-data
       #replace: true 
       #-${{ parameters.name }}.yaml
       input:
+        #templateFileExtension: ".yaml"
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/
         values:
           name: ${{ parameters.name }}
@@ -94,7 +95,7 @@ spec:
         branchName: ${{ parameters.name  }}
         title: Create Azure storage account ${{ parameters.name }} and container ${{ parameters.container }}
         description: Azure storage account and container PR
-        sourcePath: .
+        sourcePath: fetched-data
         targetPath: ./resources
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
