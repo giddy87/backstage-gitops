@@ -81,7 +81,6 @@ spec:
         sourcePath: .
         targetPath: ./resources
         allowedHosts: ['github.com']
-        description: This is ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
 
     - id: register
