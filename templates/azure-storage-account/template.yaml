@@ -67,7 +67,7 @@ spec:
     - id: fetch-base-sa
       name: Fetch Base SA
       action: fetch:template
-      targetPath: result
+      targetPath: fetched-data
       #replace: true 
       #-${{ parameters.name }}.yaml
       input:
