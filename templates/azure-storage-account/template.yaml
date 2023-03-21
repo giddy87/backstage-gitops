@@ -71,7 +71,7 @@ spec:
       #-${{ parameters.name }}.yaml
       input:
         #templateFileExtension: ".yaml"
-        #cookiecutterCompat: true
+        cookiecutterCompat: true
         targetPath: results
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/
         values:
