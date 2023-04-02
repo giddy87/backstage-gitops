@@ -85,9 +85,9 @@ spec:
       input:
         files:
           - from: ./results/azure-sa-container.yaml
-            to: ./results/{{ parameters.name}}-azure-sa-container.yaml
+            to: ./results/{{ parameters.name }}-azure-sa-container.yaml
           - from: ./results/azure-sa.yaml
-            to: ./results/{{parameters.name}}-azure-sa.yaml
+            to: ./results/{{ parameters.name }}-azure-sa.yaml
     - id: publish
       name: Publish
       action: publish:github:pull-request
