@@ -88,6 +88,8 @@ spec:
             to: ./results/${{ parameters.name }}-azure-sa-container.yaml
           - from: ./results/azure-sa.yaml
             to: ./results/${{ parameters.name }}-azure-sa.yaml
+          - from: ./results/catalog-info.yaml
+            to: ./results/${{ parameters.name }}-catalog-info.yaml
     - id: publish
       name: Publish
       action: publish:github:pull-request
@@ -100,12 +102,12 @@ spec:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
 
-#    - id: register
-#      name: Register
-#      action: catalog:register
-#      input:
-#        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
-#        catalogInfoPath: '/catalog-info.yaml'
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}/resources"
+        catalogInfoPath: '/${{ parameters.name }}-catalog-info.yaml'
 
   # some outputs which are saved along with the job for use in the frontend
 #  output:
