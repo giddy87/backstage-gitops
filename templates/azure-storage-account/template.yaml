@@ -106,8 +106,8 @@ spec:
       name: Register
       action: catalog:register
       input:
-        repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}/resources"
-        catalogInfoPath: '/${{ parameters.name }}-catalog-info.yaml'
+        repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
+        catalogInfoPath: '/resources/${{ parameters.name }}-catalog-info.yaml'
 
   # some outputs which are saved along with the job for use in the frontend
 #  output:
