@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource 
+metadata:
+  name: "test30-storage"
+#  annotations:
+#    backstage.io/techdocs-ref: dir:.
+  description: "Blob storage for storing data"
+  labels:
+    resource-type: storage 
+  tags:
+    - azure
+    - storage
+    - crossplane 
+  links:
+    - url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
+      title: Azure storage account docs
+#      icon: github
+      type: Documentation
+spec:
+  type: storage
+  lifecycle: experimental
+  owner: dev-team
+  system: azure
