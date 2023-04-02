@@ -6,7 +6,7 @@ metadata:
 #    backstage.io/techdocs-ref: dir:.
   description: Blob storage for storing data
   labels:
-    resource-type: storage account
+    resource-type: storage 
   tags:
     - azure
     - storeage Account
