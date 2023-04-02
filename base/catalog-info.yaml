@@ -9,7 +9,7 @@ metadata:
     resource-type: storage 
   tags:
     - azure
-    - storage-Account
+    - storage
     - crossplane 
   links:
     - url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
