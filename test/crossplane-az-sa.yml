@@ -1,20 +1,21 @@
 apiVersion: storage.azure.crossplane.io/v1alpha3
 kind: Account
 metadata:
-  name: "${{ values.name }}"
+  name: test478vefey
   labels:
     example: "true"
 spec:
-  resourceGroupName: "${{ values.project-name }}"
+  resourceGroupName: dev
   storageAccountSpec:
     kind: Storage
-    location: "${{ values.region }}"
+    location: "West Europe"
     sku:
       name: Standard_LRS
       tier: Standard
     tags:
       application: crossplane
   providerConfigRef:
-    name: azure
+    name: default 
   writeConnectionSecretToRef:
-    namespace: crossplane-system
+    namespace: default
+    name: test

@@ -4,8 +4,8 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: az-storage
-  title: Azure Blob Storage Dev
-  description: Create azure bucket for object storage for development environment
+  title: Azure Storage Account
+  description: Create azure storage account for object storage for development environment
 spec:
   #owner: team
   type: Resource 
@@ -14,30 +14,58 @@ spec:
   parameters:
     - title: Creating a Storage Account with a container 
       required:
+        - project
         - name
         - region
-        - container
       properties:
         name:
           title: Name
           type: string
           description: Unique name for storage account
-          ui:help: 'Hint: Name must be very unique, add random numbers at as suffix to created name e.g tonystarksa-4834'
+          ui:help: 'Hint: Azure storage account names must be globally unique, add random numbers as suffix in addition to name choice up to 15 characters max e.g tonystarksa-4834'
           maxLength: 15
           ui:autofocus: true
+        env:
+          title: Environment
+          description: Create Storage account for Local testing or Project
+          type: string
+          enum:
+            - Local
+            - Project 
+          enumNames:
+            - Local
+            - Project
+        project: 
+          title: Project
+          type: string
+          description: Name of the Project storage account is being created for
         region:
           title: Region
           type: string
           description: Unique name for storage account
-          default: "West US 2"
+          default: "UK South"
           enum:
+            - "West Europe"
+            - "North Europe"
+            - "UK South"
+            - "East US"
+            - "East US 2"
             - "West US 2"
-            - "East US 1"
+            - "West US 3"
+            - "France Central"
+            - "Central US"
           enumNames:
+            - 'West Europe'
+            - 'North Europe'
+            - 'UK South'
+            - 'East US'
+            - 'East US 2'
             - 'West US 2'
-            - 'East US 1'
+            - 'West US 3'
+            - 'France Central'
+            - 'Central US'
         container:
-          title: Container name
+          title: Default Container name (Optional)
           type: string
           description: Name of container with a maximum length of 15 characters
           maxLength: 15
@@ -73,7 +101,7 @@ spec:
         #templateFileExtension: ".yaml"
         #cookiecutterCompat: true
         targetPath: results
-        url: https://github.com/giddy87/backstage-gitops/blob/main/base/
+        url: https://github.com/giddy87/backstage-gitops/blob/main/base/azure-storage-account/
         values:
           name: ${{ parameters.name }}
           region: ${{ parameters.region }}
@@ -84,8 +112,8 @@ spec:
       action: fs:rename
       input:
         files:
-          - from: ./results/azure-sa-container.yaml
-            to: ./results/${{ parameters.name }}-azure-sa-container.yaml
+#          - from: ./results/azure-sa-container.yaml
+#            to: ./results/${{ parameters.name }}-azure-sa-container.yaml
           - from: ./results/azure-sa.yaml
             to: ./results/${{ parameters.name }}-azure-sa.yaml
           - from: ./results/catalog-info.yaml
