@@ -121,7 +121,7 @@ spec:
             to: ./results/${{ parameters.name }}-catalog-info.yaml
           - from: ./results/container-catalog-info.yaml
             to: ./results/${{ parameters.container }}-catalog-info.yaml
-    - id: delete-filds
+    - id: delete-file
       if: ${{ parameters.containers }}
       action: fs:delete
       name: Clean up container catalog
