@@ -122,7 +122,7 @@ spec:
           - from: ./results/container-catalog-info.yaml
             to: ./results/${{ parameters.container }}-catalog-info.yaml
     - id: delete-file
-      if: ${{ parameters.container == "" }}
+      if: ${{ parameters.container === "" }}
       action: fs:delete
       name: Clean up container catalog
       input:
@@ -147,7 +147,7 @@ spec:
         catalogInfoPath: '/resources/${{ parameters.name }}-catalog-info.yaml'
     - id: register-container
       name: Register-container
-      if: ${{ parameters.container }}
+      if: ${{ parameters.container !=== "" }}
       action: catalog:register
       input:
         repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
