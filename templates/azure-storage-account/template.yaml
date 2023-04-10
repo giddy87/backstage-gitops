@@ -119,6 +119,16 @@ spec:
             to: ./results/${{ parameters.name }}-azure-sa.yaml
           - from: ./results/catalog-info.yaml
             to: ./results/${{ parameters.name }}-catalog-info.yaml
+          - from: ./results/container-catalog-info.yaml
+            to: ./results/${{ parameters.container }}-catalog-info.yaml
+    - action: fs:delete
+      id: delete-filds
+      if: ${{ parameters.containers }}
+      action: fs:delete
+      name: Clean up container catalog
+      input:
+        files:
+          - ./results/${{ parameters.container }}-catalog-info.yaml
     - id: publish
       name: Publish
       action: publish:github:pull-request
@@ -131,12 +141,20 @@ spec:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
 
-    - id: register
+    - id: register-storage-account
       name: Register
       action: catalog:register
       input:
         repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
         catalogInfoPath: '/resources/${{ parameters.name }}-catalog-info.yaml'
+   - id: register-container
+      name: Register
+      if: ${{ parameters.containers }}
+      action: catalog:register
+      input:
+        repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
+        catalogInfoPath: '/resources/${{ parameters.container }}-catalog-info.yaml'
+
 
   # some outputs which are saved along with the job for use in the frontend
 #  output:
