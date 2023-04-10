@@ -4,9 +4,9 @@ metadata:
   name: "${{ values.name }}-storage"
 #  annotations:
 #    backstage.io/techdocs-ref: dir:.
-  description: "Blob storage for storing data"
+  description: "Azure storage account"
   labels:
-    resource-type: storage 
+    resource-type: storage-account
   tags:
     - azure
     - storage
@@ -21,3 +21,33 @@ spec:
   lifecycle: experimental
   owner: dev-team
   system: azure
+
+--- 
+{% if values.container %}
+apiVersion: backstage.io/v1alpha1
+kind: Component 
+metadata:
+  name: "${{ values.container }}-blob-storage"
+#  annotations:
+#    backstage.io/techdocs-ref: dir:.
+  description: "Blob storage for storing data"
+  labels:
+    resource-type: storage 
+  tags:
+    - azure
+    - storage
+    - blob 
+    - bucket
+  links:
+    - url: https://azure.microsoft.com/en-us/products/storage/blobs
+      title: Azure Blob storage docs
+#      icon: github
+      type: Documentation
+spec:
+  type: storage
+  lifecycle: experimental
+  owner: dev-team
+  system: azure
+  dependsOn:
+    - "${{ values.name }}-storage"
+{% endif %}

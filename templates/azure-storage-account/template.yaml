@@ -12,11 +12,12 @@ spec:
 
   # these are the steps which are rendered in the frontend with the form input
   parameters:
-    - title: Creating a Storage Account with a container 
+    - title: Creating a Storage Account with a container (optional)
       required:
         - project
         - name
         - region
+        - env
       properties:
         name:
           title: Name
