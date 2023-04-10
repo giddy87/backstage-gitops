@@ -19,7 +19,7 @@ metadata:
 #      icon: github
       type: Documentation
 spec:
-  type: storage
+  type: blob-storage
   lifecycle: experimental
   owner: dev-team
   system: azure
