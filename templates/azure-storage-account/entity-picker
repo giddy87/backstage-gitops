@@ -1,0 +1,16 @@
+parameters:
+  - title: EntityPicker Example
+    properties:
+      EntityPicker:
+        type: string
+        ui:field: EntityPicker
+        ui:options: {}
+
+### owned entity picker
+parameters:
+  - title: OwnedEntityPicker Example
+    properties:
+      OwnedEntityPicker:
+        type: string
+        ui:field: OwnedEntityPicker
+        ui:options: {}
