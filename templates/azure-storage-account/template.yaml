@@ -148,7 +148,7 @@ spec:
         catalogInfoPath: '/resources/${{ parameters.name }}-catalog-info.yaml'
     - id: register-container
       name: Register-container
-      if: ${{ parameters.container !== null }}
+      if: ${{ parameters.container != null }}
       action: catalog:register
       input:
         repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
