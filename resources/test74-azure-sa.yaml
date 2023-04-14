@@ -1,0 +1,24 @@
+apiVersion: storage.azure.crossplane.io/v1alpha3
+kind: Account
+metadata:
+  name: "test74"
+  labels:
+    example: "true"
+spec:
+  resourceGroupName: "NaN"
+  storageAccountSpec:
+    kind: Storage
+    location: "UK South"
+    sku:
+      name: Standard_LRS
+      tier: Standard
+    tags:
+      application: crossplane
+  providerConfigRef:
+    name: default
+  writeConnectionSecretToRef:
+    namespace: crossplane-system
+
+---
+
+
