@@ -121,7 +121,7 @@ spec:
           - from: ./results/catalog-info.yaml
             to: ./results/${{ parameters.name }}-catalog-info.yaml
           - from: ./results/container-catalog-info.yaml
-            to: ./results/${{ parameters.container }}-catalog-info.yaml
+            to: ./results/$container-{{ parameters.container }}-catalog-info.yaml
     - id: delete-file
       if: ${{ parameters.container == null }}
       action: fs:delete
