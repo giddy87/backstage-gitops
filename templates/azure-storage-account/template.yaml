@@ -42,8 +42,8 @@ spec:
           description: Name of the Project storage account is being created for
           ui:field: EntityPicker
           ui:options:
-            allowedKinds:
-              - group
+            catalogFilter:
+              kind: Group
         region:
           title: Region
           type: string
