@@ -37,9 +37,13 @@ spec:
             - Local
             - Project
         project: 
-          title: Project
+          title: Project (Group name)
           type: string
           description: Name of the Project storage account is being created for
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - group
         region:
           title: Region
           type: string
@@ -69,6 +73,7 @@ spec:
           title: Default Container name (Optional)
           type: string
           description: Name of container with a maximum length of 15 characters
+          ui:help: 'Hint: Azure Blob container names must be globally unique, add random numbers as suffix in addition to name choice up to 15 characters max e.g tonystarksa-4834'
           maxLength: 15
           ui:emptyValue: null
         owner:
