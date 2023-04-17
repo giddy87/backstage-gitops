@@ -1,18 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: artist-engagement-portal
+  description: Handy tools to keep artists in the loop
+spec:
+  owner: artist-relations-team
+  domain: artists
+
+---
 # Notice the v1beta3 version
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 # some metadata about the template itself
 metadata:
-  name: az-storage
-  title: Azure Storage Account
-  description: Create azure storage account for object storage for development environment
+  name: Project
+  title: Create and Register Project
+  description: Projects are required as containers to group all resources and components
+  tags:
+    - Project
 spec:
-  #owner: team
-  type: Resource 
+  type: System
 
   # these are the steps which are rendered in the frontend with the form input
   parameters:
-    - title: Creating a Storage Account with a container (optional)
+    - title: Create a Project
       required:
         - project
         - name
@@ -22,8 +33,7 @@ spec:
         name:
           title: Name
           type: string
-          description: Unique name for storage account
-          ui:help: 'Hint: Azure storage account names must be globally unique, add random numbers as suffix in addition to name choice up to 15 characters max e.g tonystarksa-4834'
+          description: Unique name for project
           maxLength: 15
           ui:autofocus: true
         env:
@@ -44,7 +54,6 @@ spec:
           ui:options:
             catalogFilter:
               kind: Group
-              metadata.tag: Project
         region:
           title: Region
           type: string
