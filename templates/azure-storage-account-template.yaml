@@ -44,7 +44,7 @@ spec:
           ui:options:
             catalogFilter:
               kind: System
-              metadata.tag: Project
+              #metadata.tag: Project
         region:
           title: Region
           type: string
@@ -84,7 +84,10 @@ spec:
           ui:field: OwnerPicker
           ui:options:
             catalogFilter:
-              kind: Group
+              kind: 
+                anyOf:
+                - Group
+                - User
     - title: Choose a Repo
       required:
         - repoUrl
