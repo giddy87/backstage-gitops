@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: crossplane-templates
+  description: A collection of all Templates required
+spec:
+  targets:
+    - ./azure-storage-account-template.yaml
+    - ./project-template.yaml
