@@ -84,7 +84,7 @@ spec:
           ui:field: OwnerPicker
           ui:options:
             catalogFilter:
-              kind: Group
+              kind: Group, User
     - title: Choose a Repo
       required:
         - repoUrl
@@ -161,11 +161,3 @@ spec:
         catalogInfoPath: '/resources/container-${{ parameters.container }}-catalog-info.yaml'
 
 
-  # some outputs which are saved along with the job for use in the frontend
-#  output:
-#    links:
-#      - title: Repository
-#        url: ${{ steps['publish'].output.remoteUrl }}
-#      - title: Open in catalog
-#        icon: catalog
-#        entityRef: ${{ steps['register'].output.entityRef }}

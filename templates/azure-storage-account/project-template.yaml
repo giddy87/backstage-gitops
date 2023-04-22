@@ -1,0 +1,80 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: Project
+  title: Create and Register Project
+  description: Projects are required to serve contain resources provisioned 
+  tags:
+    - Project
+spec:
+  type: System
+  # these are the steps which are rendered in the frontend with the form input
+  parameters:
+    - title: Create a Project
+      required:
+        - project 
+      properties:
+        project:
+          title: Project Name
+          type: string
+          description: Unique name for project
+          maxLength: 15
+          ui:autofocus: true
+        team:
+          title: Owner Team
+          type: string
+          description: Team owning project
+          ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              kind: Group
+    - title: Choose a Repo
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          default: 'github.com?repo=backstage-gitops&owner=giddy87' 
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+
+  # here's the steps that are executed in series in the scaffolder backend
+  steps:
+    - id: fetch-base-sa
+      name: Fetch Base catalog
+      action: fetch:template      
+      #replace: true 
+      #-${{ parameters.name }}.yaml
+      input:
+        targetPath: results
+        url: https://github.com/giddy87/backstage-gitops/blob/main/base/project
+        values:
+          project: ${{ parameters.project }}
+          team: ${{ parameters.team }}
+    - id: Rename-files
+      name: Add prefix to resource name
+      action: fs:rename
+      input:
+        files:
+          - from: ./results/catalog-info.yaml
+            to: ./results/Project-${{ parameters.project }}-catalog-info.yaml
+    - id: publish
+      name: Publish
+      action: publish:github:pull-request
+      input:
+        branchName: ${{ parameters.project  }}
+        title: Create Azure storage account ${{ parameters.name }} and container ${{ parameters.container }}
+        description: Project Creation PR
+        sourcePath: results
+        targetPath: ./resources
+        allowedHosts: ['github.com']
+        repoUrl: ${{ parameters.repoUrl }}
+    - id: register-project
+      name: Register-Project
+      action: catalog:register
+      input:
+        repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.project }}"
+        catalogInfoPath: '/resources/Project-${{ parameters.name }}-catalog-info.yaml'
