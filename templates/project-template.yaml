@@ -4,8 +4,6 @@ metadata:
   name: Project
   title: Create and Register Project
   description: Projects are required to serve contain resources provisioned 
-  tags:
-    - Project
 spec:
   type: System
   # these are the steps which are rendered in the frontend with the form input
@@ -46,8 +44,6 @@ spec:
     - id: fetch-base-sa
       name: Fetch Base catalog
       action: fetch:template      
-      #replace: true 
-      #-${{ parameters.name }}.yaml
       input:
         targetPath: results
         url: https://github.com/giddy87/backstage-gitops/blob/main/base/project
@@ -66,7 +62,7 @@ spec:
       action: publish:github:pull-request
       input:
         branchName: ${{ parameters.project  }}
-        title: Create Azure storage account ${{ parameters.name }} and container ${{ parameters.container }}
+        title: Create Project config ${{ parameters.project }}
         description: Project Creation PR
         sourcePath: results
         targetPath: ./resources
@@ -77,4 +73,4 @@ spec:
       action: catalog:register
       input:
         repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.project }}"
-        catalogInfoPath: '/resources/Project-${{ parameters.name }}-catalog-info.yaml'
+        catalogInfoPath: '/resources/Project-${{ parameters.project }}-catalog-info.yaml'
