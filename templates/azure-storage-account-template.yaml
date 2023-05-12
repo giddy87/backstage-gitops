@@ -77,16 +77,16 @@ spec:
           maxLength: 15
           ui:emptyValue: null
         owner:
-          title: Owner
+          title: Team
           type: string
-          description: Owner of the Resource
+          description: Team managing the Resource
           ui:field: OwnerPicker
           ui:options:
             catalogFilter:
-              kind: 
-                anyOf:
-                - Group
-                - User
+              kind: Group
+#                anyOf:
+#                - Group
+#                - User
     - title: Choose a Repo
       required:
         - repoUrl
