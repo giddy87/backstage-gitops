@@ -19,6 +19,6 @@ metadata:
 spec:
   type: storage-account
   lifecycle: experimental
-  owner: dev-team
-  system: azure
+  owner: "{{ values.user }}"
+  system: "{{ values.owner }}"
 
