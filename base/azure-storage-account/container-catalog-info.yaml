@@ -21,8 +21,8 @@ metadata:
 spec:
   type: blob-storage
   lifecycle: experimental
-  owner: dev-team
-  system: azure
+  owner: "${{ .values.user }}"
+  system: "${{ .values.owner }}"
   dependsOn:
   - "resource:${{ values.name }}-Storage-Account"
 #{% endif %}
