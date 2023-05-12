@@ -87,7 +87,7 @@ spec:
             catalogFilter:
               kind: Group
         user:
-          title: Team
+          title: user
           type: string
           description: User managing the Resource
           ui:field: OwnerPicker
