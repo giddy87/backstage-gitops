@@ -1,4 +1,3 @@
-# Notice the v1beta3 version
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 # some metadata about the template itself
@@ -44,7 +43,7 @@ spec:
           ui:options:
             catalogFilter:
               kind: System
-              #metadata.tag: Project
+              metadata.tags: project
         region:
           title: Region
           type: string
