@@ -19,6 +19,6 @@ metadata:
 spec:
   type: storage-account
   lifecycle: experimental
-  owner: "${{ values.user.metadata.name }}"
-  system: "${{ values.owner.metadata.name }}"
+  owner: "${{ values.user }}"
+  system: "${{ values.owner }}"
 
