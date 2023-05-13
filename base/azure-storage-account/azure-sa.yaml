@@ -5,7 +5,7 @@ metadata:
   labels:
     example: "true"
 spec:
-  resourceGroupName: "${{ values.project-name }}"
+  resourceGroupName: "${{ values.project }}"
   storageAccountSpec:
     kind: Storage
     location: "${{ values.region }}"
