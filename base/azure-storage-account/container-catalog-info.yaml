@@ -25,4 +25,4 @@ spec:
   system: "${{ values.owner }}"
   dependsOn:
   - "resource:${{ values.name }}-Storage-Account"
-#{% endif %}
+{% endif %}
