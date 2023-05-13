@@ -21,8 +21,8 @@ metadata:
 spec:
   type: blob-storage
   lifecycle: experimental
-  owner: "${{ values.user }}"
-  system: "${{ values.owner }}"
+  owner: "{{ values.user }}"
+  system: "{{ values.owner }}"
   dependsOn:
   - "resource:${{ values.name }}-Storage-Account"
 {% endif %}
