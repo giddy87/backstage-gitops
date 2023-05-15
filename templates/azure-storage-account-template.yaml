@@ -80,17 +80,17 @@ spec:
           ui:emptyValue: null
         owner:
           title: Team
-          #type: string
+          type: string
           description: Team managing the Resource
-          ui:field: EntityNamePicker
+          ui:field: OwnerPicker
           ui:options:
             catalogFilter:
               kind: Group
         user:
           title: user
-          #type: string
+          type: string
           description: User managing the Resource
-          ui:field: EntityNamePicker
+          ui:field: OwnerPicker
           ui:options:
             catalogFilter:
               kind: User
