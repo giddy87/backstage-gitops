@@ -1,0 +1,39 @@
+apiVersion: storage.azure.crossplane.io/v1alpha3
+kind: Account
+metadata:
+  name: "post12"
+  labels:
+    example: "true"
+spec:
+  resourceGroupName: "system:redbox"
+  storageAccountSpec:
+    kind: Storage
+    location: "UK South"
+    sku:
+      name: Standard_LRS
+      tier: Standard
+    tags:
+      application: crossplane
+  providerConfigRef:
+    name: default
+  writeConnectionSecretToRef:
+    namespace: crossplane-system
+
+---
+
+
+apiVersion: storage.azure.crossplane.io/v1alpha3
+kind: Container
+metadata:
+  name: "post12"
+  labels:
+    storage_account: "post12"
+spec:
+  writeConnectionSecretToRef:
+    name: "post12-container-secret"
+    namespace: crossplane-system
+  # Azure containers read their credentials from an Account, not a Provider. We
+  # use the providerRef field to specify which Account to read credentials from.
+  providerConfigRef:
+    name: "post12"
+
