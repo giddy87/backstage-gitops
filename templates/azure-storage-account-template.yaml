@@ -127,6 +127,8 @@ spec:
           region: ${{ parameters.region }}
           project-name: ${{ parameters.name }}
           container: ${{ parameters.container  }}
+          owner: ${{ parameters.owner }}
+          user: ${{ parameters.user}}
     - id: Rename-files
       name: Add prefix to resource name
       action: fs:rename
@@ -158,8 +160,8 @@ spec:
         targetPath: ./resources
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-    - id: register-storage-account
-      name: Register-sa
+    - id: register-sa
+      name: Register storage account
       action: catalog:register
       input:
         repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
@@ -171,5 +173,12 @@ spec:
       input:
         repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
         catalogInfoPath: '/resources/container-${{ parameters.container }}-catalog-info.yaml'
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register-sa.output.entityRef }}
 
 
