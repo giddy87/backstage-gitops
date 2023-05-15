@@ -3,7 +3,7 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: az-storage
-  title: Azure: Storage Account
+  title: 'Azure: Storage Account'
   description: Create azure storage account for object storage for development environment (with optional blob container)
 spec:
   #owner: team
