@@ -3,8 +3,8 @@ kind: Template
 # some metadata about the template itself
 metadata:
   name: az-storage
-  title: Azure Storage Account
-  description: Create azure storage account for object storage for development environment
+  title: Azure: Storage Account
+  description: Create azure storage account for object storage for development environment (with optional blob container)
 spec:
   #owner: team
   type: Resource 
@@ -129,6 +129,7 @@ spec:
           container: ${{ parameters.container  }}
           owner: ${{ parameters.owner }}
           user: ${{ parameters.user}}
+          project: ${{ parameters.project }}
     - id: Rename-files
       name: Add prefix to resource name
       action: fs:rename
@@ -137,11 +138,11 @@ spec:
 #          - from: ./results/azure-sa-container.yaml
 #            to: ./results/${{ parameters.name }}-azure-sa-container.yaml
           - from: ./results/azure-sa.yaml
-            to: ./results/${{ parameters.name }}-azure-sa.yaml
+            to: ./results/${{ parameters.name }}-azure-storage-account.yaml
           - from: ./results/catalog-info.yaml
-            to: ./results/${{ parameters.name }}-catalog-info.yaml
+            to: ./results/${{ parameters.name }}-azure-storage-account-catalog-info.yaml
           - from: ./results/container-catalog-info.yaml
-            to: ./results/container-${{ parameters.container }}-catalog-info.yaml
+            to: ./results/${{ parameters.container }}-azure-storage-container-catalog-info.yaml
     - id: delete-file
       if: ${{ parameters.container == null }}
       action: fs:delete
@@ -165,14 +166,14 @@ spec:
       action: catalog:register
       input:
         repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
-        catalogInfoPath: '/resources/${{ parameters.name }}-catalog-info.yaml'
+        catalogInfoPath: '/resources/${{ parameters.name }}-azure-storage-account-catalog-info.yaml'
     - id: register-container
       name: Register-container
       if: ${{ parameters.container }}
       action: catalog:register
       input:
         repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
-        catalogInfoPath: '/resources/container-${{ parameters.container }}-catalog-info.yaml'
+        catalogInfoPath: '/resources/${{ parameters.container }}-azure-storage-container-catalog-info.yaml'
   output:
     links:
       - title: Repository

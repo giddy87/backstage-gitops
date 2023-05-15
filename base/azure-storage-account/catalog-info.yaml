@@ -10,7 +10,8 @@ metadata:
   tags:
     - azure
     - storage
-    - crossplane 
+    - crossplane
+    - "Created by: ${{ values.user}}" 
   links:
     - url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
       title: Azure storage account docs
@@ -19,6 +20,6 @@ metadata:
 spec:
   type: storage-account
   lifecycle: experimental
-  owner: "${{ values.user }}"
-  system: "${{ values.owner }}"
+  owner: "${{ values.owner }}"
+  system: "${{ values.project }}"
 
