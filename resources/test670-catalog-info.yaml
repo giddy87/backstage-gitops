@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource 
+metadata:
+  name: "test670-Storage-Account"
+#  annotations:
+#    backstage.io/techdocs-ref: dir:.
+  description: "Azure storage account"
+  labels:
+    resource-type: account
+  tags:
+    - azure
+    - storage
+    - crossplane 
+  links:
+    - url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
+      title: Azure storage account docs
+#      icon: github
+      type: Documentation
+spec:
+  type: storage-account
+  lifecycle: experimental
+  owner: "user:nigel.manning"
+  system: "team-a"
+
