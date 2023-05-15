@@ -82,7 +82,7 @@ spec:
           title: Team
           #type: string
           description: Team managing the Resource
-          ui:field: OwnerPicker
+          ui:field: EntityNamePicker
           ui:options:
             catalogFilter:
               kind: Group
@@ -90,7 +90,7 @@ spec:
           title: user
           #type: string
           description: User managing the Resource
-          ui:field: OwnerPicker
+          ui:field: EntityNamePicker
           ui:options:
             catalogFilter:
               kind: User
