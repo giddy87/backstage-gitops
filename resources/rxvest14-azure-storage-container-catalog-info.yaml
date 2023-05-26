@@ -1,0 +1,27 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource 
+metadata:
+  name: "rxvest14-blob-storage"
+#  annotations:
+#    backstage.io/techdocs-ref: dir:.
+  description: "Blob storage for storing data"
+  labels:
+    resource-type: storage 
+  tags:
+    - azure
+    - storage
+    - blob 
+    - bucket
+  links:
+    - url: https://azure.microsoft.com/en-us/products/storage/blobs
+      title: Azure Blob storage docs
+#      icon: github
+      type: Documentation
+spec:
+  type: blob-storage
+  lifecycle: experimental
+  owner: "user:colette.brock"
+  system: "system:redbox"
+  dependsOn:
+  - "resource:rxvest14-Storage-Account"
