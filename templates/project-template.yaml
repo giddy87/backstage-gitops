@@ -94,7 +94,7 @@ spec:
           - from: ./results/azure-rg.yaml
             to: ./results/${{ parameters.project }}-resource-group.yaml
     - id: delete-file
-      if: ${{ parameters.resourcegroup == "No" }}
+      if: ${{ parameters.resourcegroup != "Yes" }}
       action: fs:delete
       name: Clean up Resource group file if not needed
       input:
