@@ -25,7 +25,8 @@ spec:
           type: string
           description: Unique name for storage account
           ui:help: 'Hint: Azure storage account names must be globally unique, add random numbers as suffix in addition to name choice up to 15 characters max e.g tonystarksa-4834'
-          maxLength: 15
+          maxLength: 18
+          minLength: 10
           ui:autofocus: true
         env:
           title: Environment

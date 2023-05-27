@@ -11,6 +11,7 @@ spec:
     - title: Create a Project
       required:
         - project 
+        - team
       properties:
         project:
           title: Project Name
@@ -26,6 +27,38 @@ spec:
           ui:options:
             catalogFilter:
               kind: Group
+        resourcegroup:
+          title: "Optional: Create Resource Group"
+          description: Create Resource Group if it does not exist already in Azure
+          type: string
+          enum:
+            - "Yes"
+            - "No"
+        region:
+          title: Region
+          type: string
+          description: Region to create Resource Group in
+          default: "UK South"
+          enum:
+            - "West Europe"
+            - "North Europe"
+            - "UK South"
+            - "East US"
+            - "East US 2"
+            - "West US 2"
+            - "West US 3"
+            - "France Central"
+            - "Central US"
+          enumNames:
+            - 'West Europe'
+            - 'North Europe'
+            - 'UK South'
+            - 'East US'
+            - 'East US 2'
+            - 'West US 2'
+            - 'West US 3'
+            - 'France Central'
+            - 'Central US'
     - title: Choose a Repo
       required:
         - repoUrl
@@ -50,6 +83,7 @@ spec:
         values:
           project: ${{ parameters.project }}
           team: ${{ parameters.team }}
+          resourcegroup: ${{parameters.resourcegroup }}
     - id: Rename-files
       name: Add prefix to resource name
       action: fs:rename
@@ -57,6 +91,15 @@ spec:
         files:
           - from: ./results/catalog-info.yaml
             to: ./results/Project-${{ parameters.project }}-catalog-info.yaml
+          - from: ./results/azure-rg.yaml
+            to: ./results/${{ parameters.project }}-resource-group.yaml
+    - id: delete-file
+      if: ${{ parameters.resourcegroup == "No" }}
+      action: fs:delete
+      name: Clean up Resource group file if not needed
+      input:
+        files:
+          - ./results/${{ parameters.project }}-resource-group.yaml
     - id: publish
       name: Publish
       action: publish:github:pull-request
