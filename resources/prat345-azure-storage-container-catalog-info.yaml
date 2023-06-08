@@ -1,0 +1,29 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource 
+metadata:
+  name: "prat345-Blob-container"
+#  annotations:
+#    backstage.io/techdocs-ref: dir:.
+  description: "Blob storage for storing data"
+  labels:
+    resource-type: storage 
+#    region: "UK South"
+  tags:
+    - azure
+    - storage
+    - blob 
+    - bucket
+    - "UK South"
+  links:
+    - url: https://azure.microsoft.com/en-us/products/storage/blobs
+      title: Azure Blob storage docs
+#      icon: github
+      type: Documentation
+spec:
+  type: blob-storage
+  lifecycle: experimental
+  owner: "user:guest"
+  system: "system:redbox"
+  dependsOn:
+  - "resource:pratty3455-Storage-Account"
