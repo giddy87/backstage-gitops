@@ -38,7 +38,6 @@ spec:
           title: Region
           type: string
           description: Region to create Resource Group in
-          default: "UK South"
           enum:
             - "West Europe"
             - "North Europe"
