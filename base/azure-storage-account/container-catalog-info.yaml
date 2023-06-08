@@ -8,12 +8,13 @@ metadata:
   description: "Blob storage for storing data"
   labels:
     resource-type: storage 
-    region: "${{ values.region}}"
+#    region: "${{ values.region}}"
   tags:
     - azure
     - storage
     - blob 
     - bucket
+    - "${{ values.region}}"
   links:
     - url: https://azure.microsoft.com/en-us/products/storage/blobs
       title: Azure Blob storage docs

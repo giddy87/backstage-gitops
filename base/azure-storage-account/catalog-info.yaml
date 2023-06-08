@@ -7,13 +7,15 @@ metadata:
   description: "Azure storage account"
   labels:
     resource-type: account
-    region: "${{ values.region}}"
+#    region: "${{ values.region}}"
 #    Creator: "Creator is - ${{ values.user}}"
 #    Team: "Team managing resource is - ${{ values.owner}}" 
   tags:
     - azure
     - storage
     - crossplane
+    - "${{ values.region}}"
+
 #    - "Created by: ${{ values.user}}"
   links:
     - url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
