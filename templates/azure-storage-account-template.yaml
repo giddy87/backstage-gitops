@@ -136,8 +136,6 @@ spec:
       action: fs:rename
       input:
         files:
-#          - from: ./results/azure-sa-container.yaml
-#            to: ./results/${{ parameters.name }}-azure-sa-container.yaml
           - from: ./results/azure-sa.yaml
             to: ./results/${{ parameters.name }}-azure-storage-account.yaml
           - from: ./results/catalog-info.yaml
@@ -152,7 +150,7 @@ spec:
         files:
           - ./results/container-${{ parameters.container }}-catalog-info.yaml
     - id: publish
-      name: Publish
+      name: Create Pull Request
       action: publish:github:pull-request
       input:
         branchName: ${{ parameters.name  }}
@@ -163,13 +161,13 @@ spec:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
     - id: register-sa
-      name: Register storage account
+      name: Register Storage account
       action: catalog:register
       input:
         repoContentsUrl: "https://github.com/giddy87/backstage-gitops/blob/${{ parameters.name }}"
         catalogInfoPath: '/resources/${{ parameters.name }}-azure-storage-account-catalog-info.yaml'
     - id: register-container
-      name: Register-container
+      name: Register Blob container
       if: ${{ parameters.container }}
       action: catalog:register
       input:

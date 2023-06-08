@@ -2,12 +2,13 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource 
 metadata:
-  name: "${{ values.container }}-blob-storage"
+  name: "${{ values.container }}-Blob-container"
 #  annotations:
 #    backstage.io/techdocs-ref: dir:.
   description: "Blob storage for storing data"
   labels:
     resource-type: storage 
+    region: "${{ values.region}}"
   tags:
     - azure
     - storage

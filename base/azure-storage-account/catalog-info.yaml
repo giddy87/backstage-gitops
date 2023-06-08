@@ -7,8 +7,9 @@ metadata:
   description: "Azure storage account"
   labels:
     resource-type: account
-    Creator: "Creator is - ${{ values.user}}"
-    Team: "Team managing resource is - ${{ values.owner}}" 
+    region: "${{ values.region}}"
+#    Creator: "Creator is - ${{ values.user}}"
+#    Team: "Team managing resource is - ${{ values.owner}}" 
   tags:
     - azure
     - storage
