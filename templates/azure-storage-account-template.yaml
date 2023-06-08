@@ -175,10 +175,11 @@ spec:
         catalogInfoPath: '/resources/${{ parameters.container }}-azure-storage-container-catalog-info.yaml'
   output:
     links:
-      - title: Repository
+      - title: Link to Pull Request
         url: ${{ steps.publish.output.remoteUrl }}
       - title: Open in catalog
         icon: catalog
         entityRef: ${{ steps.register-sa.output.entityRef }}
+
 
 
