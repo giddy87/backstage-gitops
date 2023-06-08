@@ -1,0 +1,32 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource 
+metadata:
+  name: "pratty3455-Storage-Account"
+#  annotations:
+#    backstage.io/techdocs-ref: dir:.
+  description: "Azure storage account"
+  labels:
+    resource-type: account
+#    region: "UK South"
+#    Creator: "Creator is - user:guest"
+#    Team: "Team managing resource is - team-b" 
+  tags:
+    - azure
+    - storage
+    - crossplane
+    - "UK South"
+
+#    - "Created by: user:guest"
+  links:
+    - url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
+      title: Azure storage account docs
+#      icon: github
+      type: Documentation
+spec:
+  type: storage-account
+  lifecycle: experimental
+  owner: "team-b"
+  system: "system:redbox"
+  dependsOn:
+  - "system:redbox"
+
