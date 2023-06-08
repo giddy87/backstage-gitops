@@ -1,0 +1,30 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource 
+metadata:
+  name: "point22457-Storage-Account"
+#  annotations:
+#    backstage.io/techdocs-ref: dir:.
+  description: "Azure storage account"
+  labels:
+    resource-type: account
+    region: "UK South"
+#    Creator: "Creator is - user:colette.brock"
+#    Team: "Team managing resource is - team-a" 
+  tags:
+    - azure
+    - storage
+    - crossplane
+#    - "Created by: user:colette.brock"
+  links:
+    - url: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
+      title: Azure storage account docs
+#      icon: github
+      type: Documentation
+spec:
+  type: storage-account
+  lifecycle: experimental
+  owner: "team-a"
+  system: "system:redbox"
+  dependsOn:
+  - "system:redbox"
+
