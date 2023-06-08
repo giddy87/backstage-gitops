@@ -14,7 +14,7 @@ metadata:
     - storage
     - blob 
     - bucket
-    - "${{ values.region}}"
+#    - "${{ values.region}}"
   links:
     - url: https://azure.microsoft.com/en-us/products/storage/blobs
       title: Azure Blob storage docs

@@ -14,7 +14,7 @@ metadata:
     - azure
     - storage
     - crossplane
-    - "${{ values.region}}"
+ #   - "${{ values.region}}"
 
 #    - "Created by: ${{ values.user}}"
   links:
